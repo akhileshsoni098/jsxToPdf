@@ -84,9 +84,15 @@ const upload = multer({ storage: storage });
 
 // Endpoint to upload HTML file and convert to PDF
 
-app.get("/", async (req, res)=>{
-    res.sendFile(path.join(__dirname,"htmlTopdf.html"))
-})
+app.get("/", async (req, res) => {
+  try {
+      const filePath = path.join(__dirname, "htmlToPdf.html");
+      res.sendFile(filePath);
+  } catch (error) {
+      console.error("Error sending file:", error);
+      res.status(500).send("Error sending the file");
+  }
+});
 
 
 app.post('/upload', upload.single('htmlFile'), async (req, res) => {
