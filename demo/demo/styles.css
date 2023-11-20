@@ -1,0 +1,10 @@
+* {
+    font-family: Inter;
+  }
+  
+  body {
+    padding: 2em;
+  }
+  h1{
+    color: red;
+  }
